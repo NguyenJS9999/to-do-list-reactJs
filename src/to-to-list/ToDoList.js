@@ -67,7 +67,7 @@ function TodoListComponent() {
         const newObject = { id : AUTO_ID, content : stateInputValue } 
         newTodoList.push(newObject);
         setTodoList(newTodoList);
-        console.log("Thêm công việc stateTodoList", newTodoList.id, newTodoList);
+        // console.log("Thêm công việc stateTodoList", newTodoList.id, newTodoList);
       } else {
         setFeedback(
           <p className="input-feedback">Vui lòng nhập công việc cần làm!</p>
@@ -75,7 +75,7 @@ function TodoListComponent() {
       }
     } // -- Xóa công việc cần làm
     function deleteTodo(todoID) {
-      console.log("Xóa công việc cần làm id:", todoID);
+      // console.log("Xóa công việc cần làm id:", todoID);
       // let deleteTodoList = [...stateTodoList];
       // console.log('deleteTodoList.id', deleteTodoList.id) 
       // deleteTodoList.splice( id - 1 , 1 );
@@ -85,16 +85,16 @@ function TodoListComponent() {
     } 
     // -- Xóa công việc đã hoàn thành
     function deleteWorkDone(workDoneID) {
-      console.log("Xóa công việc đã hoàn thành id:", workDoneID);
+      // console.log("Xóa công việc đã hoàn thành id:", workDoneID);
       let newTodoList = stateWorkDone.filter( (workDone) => workDone.id !== workDoneID)
       setWorkDone(newTodoList);
     }
     // -- Edit công việc cần làm - todo
     function editTodo(todoId) {
-      console.log('Edit công việc cần làm id: ', todoId )
+      // console.log('Edit công việc cần làm id: ', todoId )
       // Lọc ra công việc cần sửa
       let editTodoNeed = stateTodoList.filter( (todo) => todo.id === todoId )
-      console.log('editTodoNeed : ', editTodoNeed)
+      // console.log('editTodoNeed : ', editTodoNeed)
       // Cập nhập state Input-Edit của mảng đã lọc có 1 object
       setEditInputValue( editTodoNeed[0].content )
       // Lưu id của todo cần sửa đó in state riêng
@@ -105,10 +105,10 @@ function TodoListComponent() {
     }
     // -- Edit công việc đã xong - work done
     function editWorkDone(workDoneId) {
-      console.log('Edit công việc đã làm id: ', workDoneId )
+      // console.log('Edit công việc đã làm id: ', workDoneId )
     }
     function getEdit() {
-      console.log('Sửa nội dung công việc stateIdEditItem', stateIdEditItem )
+      // console.log('Sửa nội dung công việc stateIdEditItem', stateIdEditItem )
       if (stateEditInputValue) {    
         let updateTodo = stateTodoList.map( (edit) => {
           if (edit.id === stateIdEditItem) {
@@ -116,7 +116,7 @@ function TodoListComponent() {
           }
           return edit;
         });
-        console.log('updateTodo', updateTodo)
+        // console.log('updateTodo', updateTodo)
       // for (let i = 0; i < stateTodoList.length; i++ )
   
       setTodoList(updateTodo)
@@ -133,7 +133,8 @@ function TodoListComponent() {
     }
   
    // -- Xong việc Tích todo list chuyển sang done list
-    function markToDone(event, todoId) { console.log('Chuyển done => TODO id= ', todoId )
+    function markToDone(event, todoId) { 
+      // console.log('Chuyển done => TODO id= ', todoId )
       let newTodoList = stateTodoList.filter((todo) => todo.id !== todoId);
       let newDoneList = stateTodoList.filter((todo) => todo.id === todoId);
       setTodoList(newTodoList);
@@ -142,7 +143,8 @@ function TodoListComponent() {
     }
   
     // --  Bỏ Tích done list chuyển sang - việc cần làm 
-    function markToTodo(event, workDoneId) {console.log('Chuyển todo => DONE id= ', workDoneId )
+    function markToTodo(event, workDoneId) {
+      // console.log('Chuyển todo => DONE id= ', workDoneId )
       let newDoneList = stateWorkDone.filter((todo) => todo.id !== workDoneId);
       let newTodoList = stateWorkDone.filter((todo) => todo.id === workDoneId);
       setWorkDone(newDoneList);
